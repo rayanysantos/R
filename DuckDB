@@ -1,0 +1,12 @@
+library(duckdb)
+
+con <- DBI::dbConnect(drv = duckdb::duckdb(), 
+                      dbdir = "Caminho_arquivo.duckdb", 
+                      read_only = FALSE )
+
+#Vendo nomes tabelas
+dbGetQuery(con, 'SELECT * FROM information_schema.tables')
+res <- dbGetQuery(con, 'SELECT * FROM NOME_TABELA
+                  LIMIT 5')
+
+dbDisconnect(con, shutdown=TRUE)
