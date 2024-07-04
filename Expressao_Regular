@@ -1,0 +1,20 @@
+# Exemplo de string com texto entre parênteses
+texto <- "ana maria (mestrado)"
+
+# Usando gsub() para remover o texto entre parênteses
+texto_limpo <- gsub("\\s*\\(.*\\)", "", texto)
+
+#'\\(' e '\\)' correspondem aos caracteres literais de parênteses.
+#.* corresponde a qualquer sequência de caracteres (exceto novas linhas).
+#\\s* remove qualquer espaço em branco antes dos parênteses, garantindo que não fique um espaço extra.
+
+# Exibindo o resultado
+print(texto_limpo)
+
+
+
+# Salvar apenas numeros
+cpfLimpo <- as.numeric(rais$CPF)
+cpfLimpo <-gsub("[.]", "", cpfLimpo)
+cpfLimpo <-gsub("[-]", "", cpfLimpo)
+cpfLimpo <- as.numeric(str_extract(cpfLimpo,"[[:digit:]]+"))
