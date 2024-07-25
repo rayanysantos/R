@@ -1,4 +1,4 @@
-#Sodium
+# Sodium #
 
 # No ubuntu, as vezes da problema instalar o pacote Sodium no R
 # No terminal
@@ -6,3 +6,10 @@ sudo apt install libsodium-dev
 
 # No R
 install.packages("sodium")
+
+# Leaflet #
+# Problema esta no gdal-config
+
+# No terminal
+sudo apt install libgdal-dev
+
