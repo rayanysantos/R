@@ -1,0 +1,4 @@
+install.packages("ggplot2")
+library(ggplot2)
+
+https://livro.curso-r.com/8-1-o-pacote-ggplot2.html
