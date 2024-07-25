@@ -1,0 +1,21 @@
+library(stringdist)
+
+# Comparar duas strings com diferentes métodos
+dist_lev <- stringdist("kitten", "sitting", method = "lv")
+dist_jaro <- stringdist("kitten", "sitting", method = "jaro")
+dist_ham <- stringdist("10100", "10011", method = "ham")
+dist_dl <- stringdist("ca", "abc", method = "dl")
+dist_qgram <- stringdist("kitten", "sitting", method = "qgram", q = 2)
+dist_cosine <- stringdist("kitten", "sitting", method = "cosine")
+dist_jaccard <- stringdist("kitten", "sitting", method = "jaccard")
+dist_sw <- stringdist("kitten", "sitting", method = "sw")
+
+# Imprimir resultados
+print(dist_lev)
+print(dist_jaro)
+print(dist_ham)
+print(dist_dl)
+print(dist_qgram)
+print(dist_cosine)
+print(dist_jaccard)
+print(dist_sw)
