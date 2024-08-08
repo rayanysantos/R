@@ -1,6 +1,48 @@
-# Instalacao no Linux
+#######################
+# Instalacao no Linux #
+#######################
 
-# Mudar caminho de instalacao de pacotes
+#########################
+# Atualizacao de versao #
+#########################
+# https://www.biostars.org/p/88651/
+# If the new version corresponds to the second digit. For instance, you want to update from 3.4 to 3.5:
+
+Go to the file: computer/etc/apt/sources.list
+Other Sortware
+Add
+deb http://www.icesi.edu.co/CRAN/bin/linux/ubuntu xenial-cran35/ <--- change "-cran35" for the current version according to "https://cran.r-project.org/bin/linux/ubuntu/"
+open the terminal (Ctrl+Alt+t)
+write on the terminal: sudo apt-get update
+Enter the password of your PC session
+write on the terminal: sudo apt-get install r-base
+Restart the computer
+
+# If the new version corresponds to the third digit. For instance, you want to update from 3.5.1 to 3.5.2:
+
+open the terminal (Ctrl+Alt+t)
+write on the terminal: sudo apt-get update
+Enter the password of your PC session
+write on the terminal: sudo apt-get install r-base
+Restart the computer
+Additionally, maybe you need to update bioconductor and/or the packages. To do that:
+
+Update bioconductor:
+
+Open R
+source("https://bioconductor.org/biocLite.R")
+biocLite("BiocUpgrade")
+Update the packages
+
+open the terminal (Ctrl+Alt+t)
+sudo R
+update.packages()
+source("https://bioconductor.org/biocLite.R")
+biocLite()
+
+##########################################
+# Mudar caminho de instalacao de pacotes #
+##########################################
 .libPaths()
 
 # Tanto o .Renviron quando o .Rprofile podem ser instalados na pasta raiz /home/usuario
