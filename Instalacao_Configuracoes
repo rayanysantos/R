@@ -3,9 +3,15 @@
 # Mudar caminho de instalacao de pacotes
 .libPaths()
 
+# Tanto o .Renviron quando o .Rprofile podem ser instalados na pasta raiz /home/usuario
+# .Renviron serve como configuracao, para definir variaveis de ambiente que o R precisa para funcionar corretamente, como caminhos para diretórios de pacotes,
+opções de configuracao e credenciais de API.
+# O .Rprofile é para configurar o ambiente R quando ele inicia. E um arquivo de script R que e executado sempre que uma nova sessão do R é iniciada.
+
 # Quando quero definir o mesmo caminho para sudo e para outro user, definitivamente
 # Criar arquivo .Renviron em /home/usuario
 sudo nano .Renviron
 # Adicionar
 R_LIBS_USER=/caminho/padrao/
 # Consultar caminho para igual em sudo -i R e tambem em R
+
