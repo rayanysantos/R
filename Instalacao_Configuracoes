@@ -1,0 +1,11 @@
+# Instalacao no Linux
+
+# Mudar caminho de instalacao de pacotes
+.libPaths()
+
+# Quando quero definir o mesmo caminho para sudo e para outro user, definitivamente
+# Criar arquivo .Renviron em /home/usuario
+sudo nano .Renviron
+# Adicionar
+R_LIBS_USER=/caminho/padrao/
+# Consultar caminho para igual em sudo -i R e tambem em R
