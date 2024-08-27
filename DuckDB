@@ -1,12 +1,54 @@
 library(duckdb)
 
+##########################
+# Conectando com o banco #
+##########################
+
 con <- DBI::dbConnect(drv = duckdb::duckdb(), 
                       dbdir = "Caminho_arquivo.duckdb", 
                       read_only = FALSE )
 
-#Vendo nomes tabelas
+#######################
+# Vendo nomes tabelas #
+#######################
+
 dbGetQuery(con, 'SELECT * FROM information_schema.tables')
 res <- dbGetQuery(con, 'SELECT * FROM NOME_TABELA
                   LIMIT 5')
 
 dbDisconnect(con, shutdown=TRUE)
+
+#############################################
+# Extrair dados sem mandar tabela pro banco #
+#############################################
+
+con <- DBI::dbConnect(drv = duckdb::duckdb(), 
+                      dbdir = "C:\\Users\\rayan\\OneDrive\\Documentos\\CGEE\\2022\\2023\\00-RHCTI\\00-RAIS\\00-2021\\rais2021.duckdb", 
+                      read_only = FALSE )
+
+cruzamento_MeD <- tbl(con, "MeD_2009_2021") |> 
+  select(cpf, nomeIES, ufIES, grandeArea, area ) |>
+  filter(cpf %in% CPF) |>
+  collect()
+
+str(cruzamento_MeD)
+
+###########################################
+# Extrair dados mandando tabela pro banco #
+###########################################
+
+con <- DBI::dbConnect(drv = duckdb::duckdb(), 
+                      dbdir = "C:\\Users\\rayan\\OneDrive\\Documentos\\CGEE\\2022\\2023\\00-RHCTI\\00-RAIS\\00-2021\\rais2021.duckdb", 
+                      read_only = FALSE )
+
+# Unicos e um data frame com os valores que se quer extrair
+dbWriteTable(conn=con, name="PNP", value=unicos)
+
+#2262556
+res <- dbGetQuery(con, 'SELECT a.*, b.* FROM PNP as a
+                  left join rais_2021_tab as b
+                  on a."Nu.Documento" = b."Documento"')
+
+dbDisconnect(con, shutdown=TRUE)
+
+head(res)
