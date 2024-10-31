@@ -23,12 +23,12 @@ dbDisconnect(con, shutdown=TRUE)
 #############################################
 
 con <- DBI::dbConnect(drv = duckdb::duckdb(), 
-                      dbdir = "C:\\Users\\rayan\\OneDrive\\Documentos\\CGEE\\2022\\2023\\00-RHCTI\\00-RAIS\\00-2021\\rais2021.duckdb", 
+                      dbdir = "Caminho_arquivo.duckdb", 
                       read_only = FALSE )
 
-cruzamento_MeD <- tbl(con, "MeD_2009_2021") |> 
-  select(cpf, nomeIES, ufIES, grandeArea, area ) |>
-  filter(cpf %in% CPF) |>
+cruzamento_MeD <- tbl(con, "tabela") |> 
+  select(var1, var2, var3, var4, var5 ) |>
+  filter(var1 %in% VETOR) |>
   collect()
 
 str(cruzamento_MeD)
@@ -38,7 +38,7 @@ str(cruzamento_MeD)
 ###########################################
 
 con <- DBI::dbConnect(drv = duckdb::duckdb(), 
-                      dbdir = "C:\\Users\\rayan\\OneDrive\\Documentos\\CGEE\\2022\\2023\\00-RHCTI\\00-RAIS\\00-2021\\rais2021.duckdb", 
+                      dbdir = "Caminho_arquivo.duckdb", 
                       read_only = FALSE )
 
 # Unicos e um data frame com os valores que se quer extrair
@@ -46,7 +46,7 @@ dbWriteTable(conn=con, name="PNP", value=unicos)
 
 #2262556
 res <- dbGetQuery(con, 'SELECT a.*, b.* FROM PNP as a
-                  left join rais_2021_tab as b
+                  left join tab as b
                   on a."Nu.Documento" = b."Documento"')
 
 dbDisconnect(con, shutdown=TRUE)
